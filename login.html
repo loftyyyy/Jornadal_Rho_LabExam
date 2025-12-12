@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UM Skills Clinic | Log In</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="../public/icon.svg" />
+  </head>
+  <body>
+    <div class="auth">
+      <aside class="auth-panel branding">
+        <a class="brand" href="index.html">
+          <img src="../public/images/um-logo.png" alt="UM Logo" width="56" height="56" />
+          <div>
+            <h1>UM Skills Clinic</h1>
+            <p>Training & Development</p>
+          </div>
+        </a>
+
+        <div class="auth-copy">
+          <h2 style="margin: 0; font-size: 34px">Welcome back to your learning journey</h2>
+          <p style="margin: 0; color: rgba(255, 255, 255, 0.9); line-height: 1.6">
+            Continue building the skills that matter. Access your workshops, track your progress, and connect with your
+            learning community.
+          </p>
+          <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px">
+            <div class="avatar-stack">
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+            </div>
+            <p style="margin: 0; font-size: 14px; color: rgba(255, 255, 255, 0.85)">
+              Join <strong>500+ students</strong> actively learning
+            </p>
+          </div>
+        </div>
+
+        <p class="small-text" style="color: rgba(255, 255, 255, 0.75)">© 2025 UM Skills Clinic. All rights reserved.</p>
+      </aside>
+
+      <main class="auth-panel">
+        <div style="width: 100%; max-width: 460px">
+          <div class="card-auth">
+            <h2>Welcome back</h2>
+            <p class="muted">Sign in to access your learning dashboard</p>
+
+            <form id="login-form">
+              <div id="login-error" class="form-alert hidden"></div>
+
+              <div class="form-group">
+                <label class="form-label" for="login-email">Email Address</label>
+                <div class="input-wrap">
+                  <span class="input-icon">📧</span>
+                  <input class="input" id="login-email" type="email" placeholder="you@university.edu" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-row">
+                  <label class="form-label" for="login-password">Password</label>
+                  <a class="small-text text-link" href="#">Forgot password?</a>
+                </div>
+                <div class="input-wrap">
+                  <span class="input-icon">🔒</span>
+                  <input class="input" id="login-password" type="password" placeholder="Enter your password" required />
+                  <button class="toggle-visibility" type="button" id="login-toggle">Show</button>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="login-submit" type="submit">Sign In</button>
+            </form>
+
+            <p class="footer-note">
+              Don't have an account?
+              <a class="text-link" href="register.html">Sign up</a>
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
