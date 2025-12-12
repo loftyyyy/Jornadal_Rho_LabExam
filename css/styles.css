@@ -183,6 +183,7 @@ img {
   border-radius: var(--radius);
   padding: 20px;
   box-shadow: var(--shadow-soft);
+  text-align: left;
 }
 
 .card-icon {
