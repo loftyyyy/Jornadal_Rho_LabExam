@@ -201,10 +201,30 @@ img {
   margin-bottom: 10px;
 }
 
+/* Book-open card-icon background */
+.card-icon:has(img[src="icon/book-open.png"]) {
+  background: #fdf1d8 !important;
+}
+
 .card-icon img {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
+}
+
+/* Book-open icon - #f2b23c */
+.card-icon img[src="icon/book-open.png"] {
+  filter: brightness(0) saturate(100%) invert(61%) sepia(96%) saturate(354%) hue-rotate(353deg) brightness(105%) contrast(90%);
+}
+
+/* Users icon - #1a1a1a */
+.card-icon img[src="icon/users.png"] {
+  filter: brightness(0) saturate(100%);
+}
+
+/* Arrow-trending-up icon - #a63005 */
+.card-icon img[src="icon/arrow-trending-up.png"] {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(1352%) hue-rotate(347deg) brightness(92%) contrast(89%);
 }
 
 .card h3 {
