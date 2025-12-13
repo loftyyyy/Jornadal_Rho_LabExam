@@ -29,7 +29,7 @@ $userEmail = $_SESSION['user_email'] ?? '';
   <body>
     <header class="site-header">
       <div class="container" style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between">
-        <a class="brand" href="index.html">
+        <a class="brand" href="dashboard.php">
           <img src="images/university-of-mindanao-logo.png" alt="UM Logo" width="42" height="42" />
           <div>
             <h1>UM Skills Clinic</h1>
