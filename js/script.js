@@ -2,10 +2,14 @@ const qs = (selector, scope = document) => scope.querySelector(selector)
 const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector))
 
 const togglePassword = (button, input) => {
+  const icon = button.querySelector("img")
+  if (!icon) return
+  
   button.addEventListener("click", () => {
     const isHidden = input.type === "password"
     input.type = isHidden ? "text" : "password"
-    button.textContent = isHidden ? "Hide" : "Show"
+    icon.src = isHidden ? "icon/eye-slash.png" : "icon/eye.png"
+    icon.alt = isHidden ? "Hide password" : "Show password"
   })
 }
 
