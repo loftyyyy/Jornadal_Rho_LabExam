@@ -423,6 +423,13 @@ img {
   pointer-events: none;
 }
 
+.input-icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.6;
+}
+
 .toggle-visibility {
   position: absolute;
   top: 50%;
