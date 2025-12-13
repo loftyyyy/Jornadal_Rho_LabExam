@@ -50,14 +50,27 @@
             <h2>Welcome back</h2>
             <p class="muted">Sign in to access your learning dashboard</p>
 
-            <form id="login-form">
-              <div id="login-error" class="form-alert hidden"></div>
+            <form id="login-form" method="POST" action="login.php">
+              <?php
+              session_start();
+              $registered = isset($_GET['registered']) && $_GET['registered'] == '1';
+              if ($registered) {
+                echo '<div class="form-alert" style="background: rgba(34, 197, 94, 0.1); color: #15803d; border-color: rgba(34, 197, 94, 0.3);">Account created successfully! Please sign in.</div>';
+              }
+              $error = $_SESSION['login_error'] ?? '';
+              $loginEmail = $_SESSION['login_email'] ?? '';
+              unset($_SESSION['login_error']);
+              unset($_SESSION['login_email']);
+              ?>
+              <div id="login-error" class="form-alert <?php echo $error ? '' : 'hidden'; ?>">
+                <?php echo htmlspecialchars($error); ?>
+              </div>
 
               <div class="form-group">
                 <label class="form-label" for="login-email">Email Address</label>
                 <div class="input-wrap">
                   <span class="input-icon"><img src="icon/mail.png" alt="Email" /></span>
-                  <input class="input" id="login-email" type="email" placeholder="you@university.edu" required />
+                  <input class="input" id="login-email" name="email" type="email" placeholder="you@university.edu" value="<?php echo htmlspecialchars($loginEmail); ?>" required />
                 </div>
               </div>
 
@@ -68,7 +81,7 @@
                 </div>
                 <div class="input-wrap">
                   <span class="input-icon"><img src="icon/lock.png" alt="Password" /></span>
-                  <input class="input" id="login-password" type="password" placeholder="Enter your password" required />
+                  <input class="input" id="login-password" name="password" type="password" placeholder="Enter your password" required />
                   <button class="toggle-visibility" type="button" id="login-toggle">
                     <img src="icon/eye.png" alt="Show password" id="login-toggle-icon" />
                   </button>

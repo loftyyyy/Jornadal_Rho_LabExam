@@ -38,24 +38,20 @@ const handleLogin = () => {
   togglePassword(toggleBtn, passwordInput)
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault()
     clearMessage(errorBox)
 
     const email = emailInput.value.trim()
     const password = passwordInput.value.trim()
 
     if (!email || !password) {
+      e.preventDefault()
       showMessage(errorBox, "Please enter your email and password.")
       return
     }
 
+    // If validation passes, allow form to submit to PHP
     submitBtn.disabled = true
     submitBtn.textContent = "Signing in..."
-
-    setTimeout(() => {
-      alert("Signed in! Redirecting to home.")
-      window.location.href = "index.html"
-    }, 700)
   })
 }
 
@@ -81,31 +77,29 @@ const handleRegister = () => {
   togglePassword(toggleConfirmBtn, fields.confirmPassword)
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault()
     clearMessage(errorBox)
 
     if (!fields.terms.checked) {
+      e.preventDefault()
       showMessage(errorBox, "Please agree to the Terms of Service and Privacy Policy.")
       return
     }
 
     if (fields.password.value.length < 8) {
+      e.preventDefault()
       showMessage(errorBox, "Password must be at least 8 characters long.")
       return
     }
 
     if (fields.password.value !== fields.confirmPassword.value) {
+      e.preventDefault()
       showMessage(errorBox, "Passwords do not match.")
       return
     }
 
+    // If validation passes, allow form to submit to PHP
     submitBtn.disabled = true
     submitBtn.textContent = "Creating account..."
-
-    setTimeout(() => {
-      alert("Account created! Redirecting to sign in.")
-      window.location.href = "login.html"
-    }, 800)
   })
 }
 
