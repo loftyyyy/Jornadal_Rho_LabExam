@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['logged_in'] = true;
                 
                 // Redirect to dashboard
-                header('Location: dashboard.html');
+                header('Location: dashboard.php');
                 exit;
             } else {
                 // Invalid credentials

@@ -83,7 +83,7 @@ If your MySQL setup uses different credentials, update these files:
 1. **Home Page**: http://localhost:8000/index.html
 2. **Register**: http://localhost:8000/register.php
 3. **Login**: http://localhost:8000/login.php
-4. **Dashboard**: http://localhost:8000/dashboard.html (after successful login)
+4. **Dashboard**: http://localhost:8000/dashboard.php (after successful login)
 
 ## Troubleshooting
 
@@ -119,6 +119,7 @@ Jornadal_Rho_LabExam/
 ├── index.html              # Home page
 ├── login.php               # Login page and backend
 ├── register.php            # Registration page and backend
-├── dashboard.html          # Dashboard (after login)
+├── dashboard.php           # Dashboard (after login, requires authentication)
+├── logout.php              # Logout handler
 └── database.sql            # Database schema
 ```
