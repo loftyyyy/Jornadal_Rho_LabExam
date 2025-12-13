@@ -73,45 +73,34 @@ header('Content-Type: text/html; charset=utf-8');
                 ]
             );
             
-            // Read and execute database_heroku.sql (or database.sql as fallback)
-            $sqlFile = file_exists('database_heroku.sql') ? 'database_heroku.sql' : 'database.sql';
-            $sql = file_get_contents($sqlFile);
+            // Create the users table directly
+            $createTableSQL = "
+                CREATE TABLE IF NOT EXISTS users (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    fullname VARCHAR(255) NOT NULL,
+                    username VARCHAR(100) NOT NULL UNIQUE,
+                    email VARCHAR(255) NOT NULL UNIQUE,
+                    password VARCHAR(255) NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                    INDEX idx_username (username),
+                    INDEX idx_email (email)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+            ";
             
-            if ($sql === false) {
-                throw new Exception("Could not read $sqlFile file");
-            }
+            $pdo->exec($createTableSQL);
+            $executed = 1;
             
-            // Remove CREATE DATABASE and USE statements (not needed on Heroku)
-            $sql = preg_replace('/CREATE DATABASE[^;]+;/i', '', $sql);
-            $sql = preg_replace('/USE[^;]+;/i', '', $sql);
-            
-            // Split by semicolon and execute each statement
-            $statements = array_filter(
-                array_map('trim', explode(';', $sql)),
-                function($stmt) {
-                    return !empty($stmt) && !preg_match('/^--/', $stmt);
-                }
-            );
-            
-            $executed = 0;
-            foreach ($statements as $statement) {
-                $statement = trim($statement);
-                if (!empty($statement)) {
-                    $pdo->exec($statement);
-                    $executed++;
-                }
-            }
-            
-            echo '<div class="success">';
-            echo '<strong>✓ Database setup successful!</strong><br>';
-            echo "Executed $executed SQL statements.<br>";
-            echo 'You can now use the registration and login features.';
-            echo '</div>';
-            
-            // Verify
+            // Verify table was created
             $stmt = $pdo->query("SHOW TABLES LIKE 'users'");
             if ($stmt->rowCount() > 0) {
-                echo '<div class="success">✓ Users table created successfully!</div>';
+                echo '<div class="success">';
+                echo '<strong>✓ Database setup successful!</strong><br>';
+                echo '✓ Users table created successfully!<br>';
+                echo 'You can now use the registration and login features.';
+                echo '</div>';
+            } else {
+                throw new Exception("Table creation appeared to succeed but table was not found");
             }
             
         } catch (PDOException $e) {
