@@ -1,0 +1,37 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Composer
+/vendor/
+
+# Node modules (if you add any)
+node_modules/
+
+# phpMyAdmin (if included)
+phpMyAdmin/
+
+HEROKU_DEPLOY.md
+QUICK_DEPLOY.md
+HEROKU_FILES_EXPLAINED.md

@@ -1,0 +1,34 @@
+{
+  "name": "UM Skills Clinic",
+  "description": "Training & Development Platform",
+  "repository": "https://github.com/yourusername/Jornadal_Rho_LabExam",
+  "logo": "https://your-app-url.com/images/university-of-mindanao-logo.png",
+  "keywords": ["php", "mysql", "education", "training"],
+  "addons": [
+    "jawsdb:kitefin"
+  ],
+  "env": {
+    "DB_HOST": {
+      "description": "Database host (auto-configured by JawsDB addon)",
+      "required": false
+    },
+    "DB_NAME": {
+      "description": "Database name (auto-configured by JawsDB addon)",
+      "required": false
+    },
+    "DB_USER": {
+      "description": "Database user (auto-configured by JawsDB addon)",
+      "required": false
+    },
+    "DB_PASS": {
+      "description": "Database password (auto-configured by JawsDB addon)",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}

@@ -1,11 +1,8 @@
 <?php
 session_start();
 
-// Database configuration 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'um_skills_clinic');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Load database configuration
+require_once 'config.php';
 
 // Initialize variables
 $error = '';

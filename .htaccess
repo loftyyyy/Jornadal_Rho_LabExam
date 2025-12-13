@@ -1,0 +1,20 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Redirect to index.html if accessing root directory
+DirectoryIndex index.html
+
+# Allow access to static files
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Security: Prevent access to sensitive files
+<FilesMatch "^(composer\.(json|lock)|package\.json|\.env|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
